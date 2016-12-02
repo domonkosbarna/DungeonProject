@@ -1,8 +1,8 @@
 package dungeonProjectPackage;
 
-public class Hero implements Entity {
+public class Hero extends Entity {
 
-	@Override
+	//@Override
 	public void doAction(String action) {
 		// TODO Auto-generated method stub
 		System.out.println("Hero: action");

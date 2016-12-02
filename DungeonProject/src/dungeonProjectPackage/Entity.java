@@ -1,9 +1,10 @@
 package dungeonProjectPackage;
-import java.awt.*;
+import java.awt.Rectangle;
 
-public interface Entity {
+public class Entity {
 	
-
+	int x;
+	int y;
 	
 
 	Rectangle bounds;

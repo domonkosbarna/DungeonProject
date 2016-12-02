@@ -1,30 +1,64 @@
 package dungeonProjectPackage;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.WindowAdapter;
 
-public class GameWindow extends WindowAdapter
-							implements ActionListener  {
-	
-	private Hero hero;
-	private PlayerActionListener pal;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
-	@Override
+public class GameWindow extends WindowAdapter {
+	
+	
+	public JFrame frame;
+	public JPanel panel;
+	public Hero hero =null;
+	private PlayerActionListener pal;
+	public Level level =null;
+	public int sizeFactor = 50;
+	public int xOffset = 70;
+	public int yOffset = 100;
+	public boolean debug = false;
+	
+	public GameWindow(Level level)
+	{
+		this.level = level;
+		createGUI();
+	}
+	//@Override
 	public void createGUI() {
 		// TODO Auto-generated method stub
+		debug = true;
+		frame = new JFrame("GAMEWINDOW");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(500, 500);
+		
+		panel = new GamePanel(this);
+		
+		
+		frame.add(panel);
+		frame.setVisible(true);
+		
 		System.out.println("MainWindow:GUI Genarated");
 		
-		
 		hero = new Hero();
+		hero.x = level.heroStartPos.width*sizeFactor;
+		hero.x = level.heroStartPos.height*sizeFactor;
 
 	}
 
-	@Override
+	//@Override
 	public void displayText(String text) {
 		// TODO Auto-generated method stub
 		System.out.println("MainWindow:text displayed");
 
 	}
 	
+	
+	public void render()
+	{
+		panel.repaint();
+	}
 	//actionHandler
 	//create button -> addCommand: SelectHero -> addEventListener(pal)
 
