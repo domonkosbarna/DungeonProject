@@ -1,7 +1,6 @@
 package dungeonProjectPackage;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 
 import javax.swing.JFrame;
@@ -43,8 +42,10 @@ public class GameWindow extends WindowAdapter {
 		
 		hero = new Hero();
 		hero.x = level.heroStartPos.width*sizeFactor;
-		hero.x = level.heroStartPos.height*sizeFactor;
-
+		hero.y = level.heroStartPos.height*sizeFactor;
+		
+		pal = new PlayerActionListener(this);
+		frame.addKeyListener(pal);
 	}
 
 	//@Override

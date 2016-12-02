@@ -9,6 +9,13 @@ import java.awt.event.MouseListener;
 
 public class PlayerActionListener implements ActionListener, MouseListener, KeyListener {
 
+	private GameWindow gw;
+	
+	public PlayerActionListener(GameWindow gw)
+	{
+		this.gw = gw;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -17,8 +24,36 @@ public class PlayerActionListener implements ActionListener, MouseListener, KeyL
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
+	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getKeyCode() == KeyEvent.VK_A) {
+            gw.hero.x--;
+            //System.out.println("balra");
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_D) {
+        	gw.hero.x++;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_W) {
+        	gw.hero.y--;
+        	//System.out.println(gw.hero.y);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_S) {
+            gw.hero.y++;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
+        	gw.xOffset++;
+            //System.out.println("balra");
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+        	gw.xOffset--;
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_UP) {
+        	gw.yOffset++;
+        	//System.out.println(gw.hero.y);
+        }
+        else if(e.getKeyCode() == KeyEvent.VK_DOWN) {
+        	gw.yOffset--;
+        }
 		
 	}
 

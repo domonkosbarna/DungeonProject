@@ -18,6 +18,11 @@ public class GamePanel extends JPanel {
 	
 	public void paint(Graphics g)
 	{
+		//System.out.println("paint");
+		
+		g.setColor(new Color(214, 214, 214,200));
+		g.fillRect(0, 0, gw.frame.getWidth(), gw.frame.getHeight());
+		
 		
 		for(int x =0; x < gw.level.map.width; x++)
 		{
@@ -34,10 +39,19 @@ public class GamePanel extends JPanel {
 				g.fillRect(x * gw.sizeFactor + gw.xOffset, y * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 			}
 		}
+		//hero start pos
+		g.setColor(new Color(177, 254, 175,200));
+		g.fillRect(gw.level.heroStartPos.width*gw.sizeFactor + gw.xOffset, gw.level.heroStartPos.height * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
+		
+		//mosnter start pos
+		g.setColor(new Color(254, 175, 175,200));
+		g.fillRect(gw.level.monsterStarPos.width*gw.sizeFactor + gw.xOffset, gw.level.monsterStarPos.height * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
+		
+		
 		if(gw.hero!=null)
 		{
 			g.setColor(Color.blue);
-			g.fillOval(gw.hero.x + gw.xOffset, gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
+			g.fillOval(gw.hero.x + gw.xOffset, gw.hero.y+ gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 		}
 		
 		
