@@ -1,6 +1,10 @@
 package dungeonProjectPackage;
 
-public interface MainWindow {
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+
+public interface MainWindow extends WindowAdapter
+implements ActionListener {
 	
 
 
