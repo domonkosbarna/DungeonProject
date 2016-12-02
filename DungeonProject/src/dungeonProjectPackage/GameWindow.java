@@ -10,6 +10,11 @@ public class GameWindow extends WindowAdapter
 	private Hero hero;
 	private PlayerActionListener pal;
 
+	public GameWindow()
+	{
+		createGUI();
+	}
+	
 	//@Override
 	public void createGUI() {
 		// TODO Auto-generated method stub

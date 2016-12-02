@@ -5,7 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		
-		final String clientID = args[0];
+		//final String clientID = args[0];
 		
 		//AH
 		//1. create new window
