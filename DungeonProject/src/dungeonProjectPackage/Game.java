@@ -88,41 +88,22 @@ public class Game  implements Runnable {
 	
 	public void tick(){
 		
-		//if(gw.hero.x )
-		/*                     
-		 * 			  totalDistance = xDistance + yDistance;
-					xSpeed = amountToMove * (xDistance / totalDistance); //uses proportion of xDistance to set proportion of speed.
-					ySpeed = amountToMove * (yDistance / totalDistance); //same for yDistance
-		 *              
-		 *              
-		 *              
-		 *              // itt megirni az utkozeseket, a battlet, itt valami gw.hero-val kell hivatkozni rájuk, és ne arrayel, hanem vectorral
-		Hero valami[];
-		Monster target;
-		target=new Monster();
-		
-		
-		valami = new Hero[4];
-		
-		valami[0] = new Hero();
-		
-		for(int i = 0; i < valami.length;i++)
-		{
-			valami[i].attack(target);
-		}
-		*/
+
+		boolean battleStatus = false;
 		
 		
 		double battleDistance;
 		double enemydistance;
+		
+		
 		enemydistance = Math.sqrt((gw.hero.x - gw.monster.x)*(gw.hero.x - gw.monster.x) + (gw.hero.y - gw.monster.y)*(gw.hero.y - gw.monster.y));
 		battleDistance = Math.sqrt((gw.hero.x - gw.monster.x)*(gw.hero.x - gw.monster.x) + (gw.hero.y - gw.monster.y)*(gw.hero.y - gw.monster.y));
-		boolean csatavan;
-		boolean activeTurn = false;
+
 		
 		
 		if(battleDistance < 500)
 		{					
+			battleStatus = true;
 			
 			
 			ArrayList<Entity> Encounter = new ArrayList<Entity>();
@@ -130,6 +111,8 @@ public class Game  implements Runnable {
 			Encounter.add(gw.hero);
 			Encounter.add(gw.monster);
 			
+
+		
 			for (int i = 0; i < Encounter.size(); i++) {
 			    Encounter.get(i).rollInit();
 			    System.out.println(Encounter.get(i).getEntityName() +" initiative is " + Encounter.get(i).getInitative());
@@ -142,35 +125,7 @@ public class Game  implements Runnable {
 				System.out.println(i +"\n" + Encounter.get(i).getEntityName() );
 			}
 		
-			/*
-			csatavan = true;
-			ArrayList<Entity> Encounter = new ArrayList<Entity>();
-	      
-			int[] kezdodobasok;
-			for(int i = 0; i < kezdodobasok.length; i++)
-			{
-				kezdodobasok[i] = gw.hero.rollInit();
-				
-			}
-			Encounter.add(gw.hero);
-			Encounter.add(gw.monster);
-			
-			Encounter.size();
-			
-			for(int i=0; i < Encounter.size(); i++)
-			{
-				valami[i]=Encounter.get(i).rollInit();
-				
-			}
-			ArrayList<Entity> rendezve = new ArrayList<Entity>();
-
-			
-			Encounter = rendezve;
-			
-			
-			Collections.sort();
-		*/
-			
+					
 	       
 	
 			
