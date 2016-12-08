@@ -43,15 +43,21 @@ public class GamePanel extends JPanel {
 		g.setColor(new Color(177, 254, 175,200));
 		g.fillRect(gw.level.heroStartPos.width*gw.sizeFactor + gw.xOffset, gw.level.heroStartPos.height * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 		
-		//mosnter start pos
+		//monster start pos
 		g.setColor(new Color(254, 175, 175,200));
-		g.fillRect(gw.level.monsterStarPos.width*gw.sizeFactor + gw.xOffset, gw.level.monsterStarPos.height * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
+		g.fillRect(gw.level.monsterStartPos.width*gw.sizeFactor + gw.xOffset, gw.level.monsterStartPos.height * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 		
 		
 		if(gw.hero!=null)
 		{
 			g.setColor(Color.blue);
 			g.fillOval(gw.hero.x + gw.xOffset, gw.hero.y+ gw.yOffset, gw.sizeFactor, gw.sizeFactor);
+		}
+		
+		if(gw.monster!=null)
+		{
+			g.setColor(Color.BLACK);
+			g.fillOval(gw.monster.x + gw.xOffset, gw.monster.y+ gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 		}
 		
 		

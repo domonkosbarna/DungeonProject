@@ -27,18 +27,19 @@ public class PlayerActionListener implements ActionListener, MouseListener, KeyL
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getKeyCode() == KeyEvent.VK_A) {
-            gw.hero.x--;
+			
+            gw.PlayerWantToMovex-=50;
             //System.out.println("balra");
         }
         else if(e.getKeyCode() == KeyEvent.VK_D) {
-        	gw.hero.x++;
+        	gw.PlayerWantToMovex+=50;
         }
         else if(e.getKeyCode() == KeyEvent.VK_W) {
-        	gw.hero.y--;
+        	gw.PlayerWantToMovey-=50;
         	//System.out.println(gw.hero.y);
         }
         else if(e.getKeyCode() == KeyEvent.VK_S) {
-            gw.hero.y++;
+            gw.PlayerWantToMovey+=50;
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT) {
         	gw.xOffset++;
@@ -76,7 +77,7 @@ public class PlayerActionListener implements ActionListener, MouseListener, KeyL
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}

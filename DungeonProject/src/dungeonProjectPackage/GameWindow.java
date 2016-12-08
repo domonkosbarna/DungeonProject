@@ -11,13 +11,18 @@ public class GameWindow extends WindowAdapter {
 	
 	public JFrame frame;
 	public JPanel panel;
+	
 	public Hero hero =null;
+	public Monster monster =null;
+	
 	private PlayerActionListener pal;
 	public Level level =null;
 	public int sizeFactor = 50;
 	public int xOffset = 70;
 	public int yOffset = 100;
 	public boolean debug = false;
+	public int PlayerWantToMovex=0;
+	public int PlayerWantToMovey=0;
 	
 	public GameWindow(Level level)
 	{
@@ -43,6 +48,10 @@ public class GameWindow extends WindowAdapter {
 		hero = new Hero();
 		hero.x = level.heroStartPos.width*sizeFactor;
 		hero.y = level.heroStartPos.height*sizeFactor;
+		
+		monster = new Monster();
+		monster.x = level.monsterStartPos.width*sizeFactor;  
+		monster.y = level.monsterStartPos.height*sizeFactor;
 		
 		pal = new PlayerActionListener(this);
 		frame.addKeyListener(pal);
