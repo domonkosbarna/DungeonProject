@@ -21,6 +21,8 @@ public class GameWindow extends WindowAdapter {
 	private PlayerActionListener pal;
 	public BufferedImage[] Floors; 
 	public BufferedImage[] Walls; 
+	public BufferedImage[] Heroes; 
+	public BufferedImage[] Monsters; 
 	public Level level =null;
 	public int sizeFactor = 50;
 	public int xOffset = 70;
@@ -41,6 +43,8 @@ public class GameWindow extends WindowAdapter {
 		
 		Floors = new BufferedImage[4];
 		Walls = new BufferedImage[1];
+		Heroes = new BufferedImage[1];
+		Monsters = new BufferedImage[1];
 		try {	
 			
 			Floors[0] = ImageIO.read(new File("Floor1.bmp"));
@@ -49,6 +53,10 @@ public class GameWindow extends WindowAdapter {
 			Floors[3] = ImageIO.read(new File("Floor4.bmp"));
 			
 			Walls[0] = ImageIO.read(new File("Wall1.jpg"));
+			
+			Heroes[0] = ImageIO.read(new File("Hero1.gif"));
+			
+			Monsters[0] = ImageIO.read(new File("Zombie1.jpg"));
 		
 		} catch (IOException e) {
 			System.out.println("szar a képbeolvasas");

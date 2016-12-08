@@ -1,6 +1,5 @@
 package dungeonProjectPackage;
 import java.awt.Rectangle;
-import java.util.Comparator;
 
 
 public class Entity implements Comparable<Entity> {

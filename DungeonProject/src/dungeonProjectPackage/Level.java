@@ -12,8 +12,8 @@ public Dimension monsterStartPos;
 		if (levelNum == 0)
 		{
 			heroStartPos = new Dimension(2,2);
-			monsterStartPos = new Dimension(5,7);
-			map = new Map(8,10);
+			monsterStartPos = new Dimension(16,15);
+			map = new Map(20,20);
 		}
 	}
 }
