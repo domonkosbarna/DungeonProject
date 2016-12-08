@@ -1,25 +1,24 @@
 package dungeonProjectPackage;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.util.Random;
 
 public class Tile {
 	public int type;
-	public BufferedImage img = null;
+	public int tileNumber;
+
 	
 	public Tile(int type)
 	{
 		this.type = type;
-		if(type == 1)
+		
+		Random rand = new Random();
+		if(type==1)
 		{
-			
-			try {
-			    img = ImageIO.read(new File("Floor1.bmp"));
-			} catch (IOException e) {
-			}
+			tileNumber = rand.nextInt(4) + 1;
+		}
+		else
+		{
+			tileNumber = rand.nextInt(1) + 1;
 		}
 	}
 }

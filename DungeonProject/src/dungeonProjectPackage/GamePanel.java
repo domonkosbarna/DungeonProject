@@ -30,29 +30,28 @@ public class GamePanel extends JPanel {
 			{
 				if(gw.level.map.tiles[x][y].type == 1)
 				{
-					if(gw.level.map.tiles[x][y].img != null)
-					{
-						g.drawImage(gw.level.map.tiles[x][y].img, x, y, gw.sizeFactor, gw.sizeFactor, null);
-					}
-					else
-					{
-						g.setColor(new Color(203, 140, 52, 175));
-					}
+					int i = gw.level.map.tiles[x][y].tileNumber-1;
+					g.drawImage(gw.Floors[i], x * gw.sizeFactor+gw.xOffset, y * gw.sizeFactor+gw.yOffset, gw.sizeFactor, gw.sizeFactor, null);
 					
+				}
+				else if (gw.level.map.tiles[x][y].type == 2)
+				{
+					int i = gw.level.map.tiles[x][y].tileNumber-1;
+					g.drawImage(gw.Walls[i], x * gw.sizeFactor+gw.xOffset, y * gw.sizeFactor+gw.yOffset, gw.sizeFactor, gw.sizeFactor, null);
 				}
 				else
 				{
-					g.setColor(Color.GRAY);
+					g.fillRect(x * gw.sizeFactor + gw.xOffset, y * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 				}
-				g.fillRect(x * gw.sizeFactor + gw.xOffset, y * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
+				
 			}
 		}
 		//hero start pos
-		g.setColor(new Color(177, 254, 175,200));
+		g.setColor(new Color(0, 255, 0,100));
 		g.fillRect(gw.level.heroStartPos.width*gw.sizeFactor + gw.xOffset, gw.level.heroStartPos.height * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 		
 		//mosnter start pos
-		g.setColor(new Color(254, 175, 175,200));
+		g.setColor(new Color(255, 0, 0,100));
 		g.fillRect(gw.level.monsterStarPos.width*gw.sizeFactor + gw.xOffset, gw.level.monsterStarPos.height * gw.sizeFactor + gw.yOffset, gw.sizeFactor, gw.sizeFactor);
 		
 		
