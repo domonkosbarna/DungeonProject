@@ -30,7 +30,15 @@ public class GamePanel extends JPanel {
 			{
 				if(gw.level.map.tiles[x][y].type == 1)
 				{
-					g.setColor(new Color(203, 140, 52, 175));
+					if(gw.level.map.tiles[x][y].img != null)
+					{
+						g.drawImage(gw.level.map.tiles[x][y].img, x, y, gw.sizeFactor, gw.sizeFactor, null);
+					}
+					else
+					{
+						g.setColor(new Color(203, 140, 52, 175));
+					}
+					
 				}
 				else
 				{
