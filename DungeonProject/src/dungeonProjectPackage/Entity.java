@@ -1,9 +1,11 @@
 package dungeonProjectPackage;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 
 
 public class Entity implements Comparable<Entity> {
 	
+	public Dimension clickPosition;
 	public int x;
 	public int y;
 	
@@ -11,13 +13,17 @@ public class Entity implements Comparable<Entity> {
 
 	private String entityType;
 
+	
+
 	private int HP;
 	private int AC;
 	private int AttackP;
 	private int dmgP;
 	private int movespeed;
 	private int initative;
+	private int actionPoint;
 	
+
 
 
 
@@ -81,7 +87,7 @@ public class Entity implements Comparable<Entity> {
 		
 		};
 	
-		public int compareTo(Entity compareEntity) {
+	public int compareTo(Entity compareEntity) {
 
 			int compareInitative = ((Entity) compareEntity).getInitative();
 
@@ -138,6 +144,15 @@ public class Entity implements Comparable<Entity> {
 
 	public void setAttackP(int attackP) {
 		AttackP = attackP;
+	}
+
+	public int getActionPoint() {
+		return actionPoint;
+	}
+
+
+	public void setActionPoint(int actionPoint) {
+		this.actionPoint = actionPoint;
 	}
 
 	public int getMovespeed() {
@@ -243,7 +258,14 @@ public class Entity implements Comparable<Entity> {
 		this.currentdmgP = currentdmgP;
 	}
 
+	public String getEntityType() {
+		return entityType;
+	}
 
+
+	public void setEntityType(String entityType) {
+		this.entityType = entityType;
+	}
 	
 	
 

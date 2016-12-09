@@ -1,5 +1,6 @@
 package dungeonProjectPackage;
 
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -80,13 +81,17 @@ public class GameWindow extends WindowAdapter {
 		hero = new Hero();
 		hero.x = level.heroStartPos.width*sizeFactor;
 		hero.y = level.heroStartPos.height*sizeFactor;
+		hero.clickPosition = new Dimension(hero.x+xOffset,hero.y+yOffset);
 		
 		monster = new Monster();
 		monster.x = level.monsterStartPos.width*sizeFactor;  
 		monster.y = level.monsterStartPos.height*sizeFactor;
+		monster.clickPosition = new Dimension(monster.x+xOffset,monster.y+yOffset);
 		
 		pal = new PlayerActionListener(this);
 		frame.addKeyListener(pal);
+	//	frame.addMouseListener(pal);
+		panel.addMouseListener(pal);
 	}
 
 	//@Override

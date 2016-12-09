@@ -1,5 +1,6 @@
 package dungeonProjectPackage;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -71,9 +72,10 @@ public class PlayerActionListener implements ActionListener, MouseListener, KeyL
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		gw.hero.clickPosition.setSize(new Dimension((int)e.getPoint().getX(),(int) e.getPoint().getY()));
+	
 	}
 
 	@Override

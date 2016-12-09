@@ -19,6 +19,8 @@ public class Monster extends Entity
 		this.setMovespeed(7);
 		this.currentstat();
 		this.setEntityName("Monster");
+		this.setActionPoint(1);
+		this.setEntityType("Enemy");
 	};
 	
 	

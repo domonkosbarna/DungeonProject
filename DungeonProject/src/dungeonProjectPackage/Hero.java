@@ -17,6 +17,8 @@ public class Hero extends Entity {
 		this.setDmgP(5);
 		this.currentstat();
 		this.setEntityName("Hercules");
+		this.setActionPoint(1);
+		this.setEntityType("Hero");
 	};
 
 	
