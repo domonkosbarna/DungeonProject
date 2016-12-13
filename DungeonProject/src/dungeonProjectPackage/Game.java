@@ -12,6 +12,8 @@ public class Game  implements Runnable {
  public int moveDistancex = 0;
  public int moveDistancey = 0;
  
+ public int i = 0; //activePlayerIndex
+ 
  
  
  //public Dimension movingto
@@ -43,6 +45,12 @@ public class Game  implements Runnable {
 	}
  	
  	
+	public Dimension convertTileToPixel(Dimension d)
+	{
+		return new Dimension((int) ((d.getWidth()*gw.sizeFactor)+gw.xOffset),(int) ((d.getHeight()*gw.sizeFactor)+gw.yOffset));
+	}
+	
+	
 	
 	public Game()
 	{
@@ -184,7 +192,7 @@ public class Game  implements Runnable {
 				}
 				
 				
-				if(battleDistance < 500)
+				if(battleDistance < 800)
 				{
 					battleStatus = 1;
 				
@@ -198,16 +206,20 @@ public class Game  implements Runnable {
 					for (int i = 0; i < Encounter.size(); i++) 
 					{
 					    Encounter.get(i).rollInit();
-					    //System.out.println(Encounter.get(i).getEntityName() +" initiative is " + Encounter.get(i).getInitative());
+					    System.out.println(Encounter.get(i).getEntityName() +" initiative is " + Encounter.get(i).getInitative());
 					}
 					
 					Collections.sort(Encounter);
 				
-					//System.out.println("Fight! \n" );
-					for (int i = 0; i < Encounter.size(); i++) 
-					{
-						//System.out.println(i +"\n" + Encounter.get(i).getEntityName() );
-					}
+					System.out.println("Battle begins..! \n" );
+					
+					
+					//convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)).width
+					
+					gw.hero.x = convertTileToPixel((convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)))).width;
+					convertTileToPixel(d (convertPixelToTile((gw.h
+					
+					
 				}
 				break;
 				
