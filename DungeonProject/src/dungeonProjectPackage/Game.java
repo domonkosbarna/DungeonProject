@@ -13,7 +13,7 @@ public class Game  implements Runnable {
  public int moveDistancey = 0;
  
  public int i = 0; //activePlayerIndex
- 
+	ArrayList<Entity> Encounter = new ArrayList<Entity>();
  
  
  //public Dimension movingto
@@ -162,13 +162,12 @@ public class Game  implements Runnable {
 				
 				if(convertPixelToTile(gw.hero.clickPosition).width != convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)).width || convertPixelToTile(gw.hero.clickPosition).height != convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)).height)			
 				{
-					moveDistancex = gw.hero.clickPosition.width - (gw.hero.x)-70;
-					moveDistancey = gw.hero.clickPosition.height - (gw.hero.y)-100;
+					moveDistancex = gw.hero.clickPosition.width - (gw.hero.x)-gw.xOffset;
+					moveDistancey = gw.hero.clickPosition.height - (gw.hero.y)-gw.yOffset;
 				}
 				
 				
-				System.out.println("Hero poziciója: "+gw.hero.x+ " "+gw.hero.y +"\n "+gw.hero.clickPosition+"\n"+moveDistancex +" "+ moveDistancey);
-			
+							
 				if (0 < moveDistancex)    
 				{														// most igy egybõl odamegy és rááll naggyon vicces    -ezt ugye beleirhatnám a monster movejába
 					gw.hero.x += 1;
@@ -196,7 +195,7 @@ public class Game  implements Runnable {
 				{
 					battleStatus = 1;
 				
-					ArrayList<Entity> Encounter = new ArrayList<Entity>();
+
 				
 					Encounter.add(gw.hero);
 					Encounter.add(gw.monster);
@@ -214,122 +213,219 @@ public class Game  implements Runnable {
 					System.out.println("Battle begins..! \n" );
 					
 					
-					//convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)).width
+			//		gw.hero.x = convertTileToPixel((convertPixelToTile(new Dimension(gw.hero.x,gw.hero.y)))).width-gw.xOffset;
+			//		gw.hero.y = convertTileToPixel((convertPixelToTile(new Dimension(gw.hero.x,gw.hero.y)))).height-gw.yOffset;
 					
-					gw.hero.x = convertTileToPixel((convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)))).width;
-					convertTileToPixel(d (convertPixelToTile((gw.h
+										
+					gw.hero.x = convertTileToPixel((convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)))).width-gw.xOffset;
+					gw.hero.y = convertTileToPixel((convertPixelToTile(new Dimension(gw.hero.x+gw.xOffset,gw.hero.y+gw.yOffset)))).height-gw.yOffset;
 					
-					
+					System.out.println("It's "+ Encounter.get(i).getEntityName()+"'s turn.");
 				}
 				break;
 				
-			case 1:
+			case 1:													//battleStatus 1
 				
-				System.out.println("case 1");
-				if(enemydistance > 50 )                 //hurrááá! ha 50-et lep 80-ra allitsd!
-				{ //(gw.monster.getMovespeed() > 0) || 
-					if (gw.monster.x < gw.hero.x)   
-					{														// most igy egybõl odamegy és rááll naggyon vicces    -ezt ugye beleirhatnám a monster movejába
-						gw.monster.x += 1;
-						gw.monster.setMovespeed(gw.monster.getMovespeed()-1);
-	
-					}
-					else if (gw.monster.x > gw.hero.x)
-						gw.monster.x -= 1;
-						gw.monster.setMovespeed(gw.monster.getMovespeed()-1);
-	
-	
-					if (gw.monster.y < gw.hero.y)
-					{
-						gw.monster.y += 1;
-						gw.monster.setMovespeed(gw.monster.getMovespeed()-1);
-	
-					}
-					else if (gw.monster.y > gw.hero.y)
-						gw.monster.y -= 1;
-						gw.monster.setMovespeed(gw.monster.getMovespeed()-1);
-				}
-				else
-				{ 
 				
-					while(gw.hero.getHP()>0 && gw.monster.getHP()>0 )
-					{
-		
-						Scanner input = new Scanner(System.in);
-						String userInput = "";  
-						
+				switch(Encounter.get(i).getEntityType())
+				{
+				case "Player":
 					
-						System.out.println("***********\nThe monster is attacking!\n");
-						//monster.ACrest();
-						gw.monster.attack(gw.hero);
+				//	System.out.println("It's "+ Encounter.get(i).clickPosition+" the click position.");
+					
+					if(Encounter.get(i).getCurrentMovespeed() > 0)				//   1. Ha van még moveja...
+					{
 						
-						
-						System.out.println("Please type 'roll' to attack!\nThe monster has "+gw.monster.getCurrentHP() +" hit points left.\n"
-								+ "You have "+gw.hero.getCurrentHP() +" hit points left.");
-						userInput =  input.nextLine();	
-						
-						
-						
-						switch(userInput) 
+						if(convertPixelToTile(Encounter.get(i).clickPosition).width != convertPixelToTile(new Dimension(Encounter.get(i).x+gw.xOffset,Encounter.get(i).y+gw.yOffset)).width || convertPixelToTile(Encounter.get(i).clickPosition).height != convertPixelToTile(new Dimension(Encounter.get(i).x+gw.xOffset,Encounter.get(i).y+gw.yOffset)).height)			
 						{
-						
-							case "roll" : 
-								//hero.ACrest();
-								gw.hero.attack(gw.monster);
-								break;
-							case "drink":
-								//hero.potion();
-								break;
-							case "def":
-								//hero.def();
-								break;
-							/*case "cast":
-								if(hero.getCls() == 1) 
-								{
-								hero.cast(monster);
-								}
-								else {
-									System.out.println("You are not a wizard, you can't cast spells!\n");	
-									userInput =  input.nextLine();	
-								}
-								break;*/
-								
-							default: 
-								System.out.println("Maybe You misspelled it! \nPlease type 'roll' to attack!\n");
-								userInput =  input.nextLine();	
-							break;
+							moveDistancex = convertTileToPixel((convertPixelToTile(new Dimension(Encounter.get(i).clickPosition.width,Encounter.get(i).clickPosition.height)))).width - (Encounter.get(i).x)-gw.xOffset;
+							moveDistancey = convertTileToPixel((convertPixelToTile(new Dimension(Encounter.get(i).clickPosition.width,Encounter.get(i).clickPosition.height)))).height - (Encounter.get(i).y)-gw.yOffset;
+							
+							
+						//	moveDistancex = convertPixelToTile(new Dimension(Encounter.get(i).clickPosition.width+gw.xOffset,Encounter.get(i).clickPosition.height+gw.yOffset)).width - (Encounter.get(i).x)-gw.xOffset;
+							//moveDistancey = convertPixelToTile(new Dimension(Encounter.get(i).clickPosition.width+gw.xOffset,Encounter.get(i).clickPosition.height+gw.yOffset)).height - (Encounter.get(i).y)-gw.yOffset;
+							
+							//moveDistancex = Encounter.get(i).clickPosition.width - (Encounter.get(i).x)-gw.xOffset;
+							//moveDistancey = Encounter.get(i).clickPosition.height - (Encounter.get(i).y)-gw.yOffset;
 						}
 						
-						if(gw.monster.getCurrentHP()<=0)
-						{
-							break;	
+						
+									
+						if (0 < moveDistancex)    
+						{														
+							Encounter.get(i).x += 50;
+							moveDistancex -=50;
+							Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed() - 1);
+							System.out.println( Encounter.get(i).getCurrentMovespeed()+"= moves left");
 						}
+						else if (0 > moveDistancex)
+						{
+							Encounter.get(i).x -= 50;
+							moveDistancex +=50;
+							Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed() - 1);
+							System.out.println( Encounter.get(i).getCurrentMovespeed()+"= moves left");
+						}
+			
+						if (0 < moveDistancey)
+						{
+							Encounter.get(i).y += 50;
+							moveDistancey -=50;
+							Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed() - 1);
+							System.out.println( Encounter.get(i).getCurrentMovespeed()+"= moves left");
+						}
+						else if (0 > moveDistancey)
+						{
+							Encounter.get(i).y -= 50;
+							moveDistancey +=50;
+							Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed() - 1);
+							System.out.println( Encounter.get(i).getCurrentMovespeed()+"= moves left");
+						}
+						
+						
+						
+					}				
 					
+					
+					if(Encounter.get(i).getCurrentActionPoint() > 0)		//   2. Ha van még actionPointja
+					{
+						if(enemydistance <=  50)
+						{
+							//Encounter.get(i).attack(gw.monster);
+						}
+											
 					}
-				
-				
+						
+					if(Encounter.get(i).getCurrentMovespeed() < 1 && (Encounter.get(i).getCurrentActionPoint() < 1 || enemydistance >= 50))    //  3. Ha már nincs movement vagy AP adja át a kört 
+					{
+						if((i+1) < Encounter.size())
+						{
+							Encounter.get(i).clickPosition.width = Encounter.get(i).x+gw.xOffset;
+							Encounter.get(i).clickPosition.height = Encounter.get(i).y+gw.yOffset;
+							
+							
+							i++;
+							Encounter.get(i).refreshmove();				
+
+							
+							System.out.println("It's "+ Encounter.get(i).getEntityName()+"'s turn.");
+
+						//	moveDistancex = Encounter.get(i).clickPosition.width - (Encounter.get(i).x)-gw.xOffset;
+						//	moveDistancey = Encounter.get(i).clickPosition.height - (Encounter.get(i).y)-gw.yOffset;
+						
+						
+							
+							
+							
+						}
+						else
+						{
+							Encounter.get(i).clickPosition.width = Encounter.get(i).x+gw.xOffset;
+							Encounter.get(i).clickPosition.height = Encounter.get(i).y+gw.yOffset;
+							
+							
+							i=0;
+							Encounter.get(i).refreshmove();
+
+	
+							System.out.println("It's "+ Encounter.get(i).getEntityName()+"'s turn.");
+
+													
+						}
+						
+					}	
+						
+						
+						
+					
 					break;
-				/*
-				if(Entity == null)
-				{
-					activePlayer = Encounter.get(0);
-				}
-		
-				}
-				else
-				{
-					if(activePlayer.getMovespeed() > 0 || activePlayer.getActionPoint() > 0)
+					
+				case "Enemy":
+					
+					while(Encounter.get(i).getCurrentMovespeed()> 0) 			// 1. Ha van még moveja
 					{
-					if(activePlayer.clickPosition)	
+						if(enemydistance > 80 )             			//Ha távolabb áll az ellenfél
+						{ 
+							if (Encounter.get(i).x < gw.hero.x)   
+							{													
+								Encounter.get(i).x += 50;
+								Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed()-1);
+			
+							}
+							else if (Encounter.get(i).x > gw.hero.x)
+							{
+								Encounter.get(i).x -= 50;
+								Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed()-1);
+							}
+			
+			
+							if (Encounter.get(i).y < gw.hero.y)
+							{
+								Encounter.get(i).y += 50;
+								Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed()-1);
+			
+							}
+							else if (Encounter.get(i).y > gw.hero.y)
+							{
+								Encounter.get(i).y -= 50;
+								Encounter.get(i).setCurrentMovespeed(Encounter.get(i).getCurrentMovespeed()-1);
+							}
+						}
+					
 					}
-				}
-				*/
+					
+					
+					if(Encounter.get(i).getCurrentActionPoint() > 0)		//   2. Ha van még actionPointja
+					{
+						if(enemydistance <=  50)
+						{
+						//	Encounter.get(i).attack(gw.hero);
+						}
+						
+												
+											
+					}
+						
+					if(Encounter.get(i).getCurrentMovespeed() < 1 && (Encounter.get(i).getCurrentActionPoint() < 1 || enemydistance >= 50))    //  3. Ha már nincs movement vagy AP adja át a kört 
+					{
+						if((i+1) < Encounter.size())
+						{
+							
+							i++;
+							Encounter.get(i).refreshmove();	
+
+						//	Encounter.get(i).clickPosition = null;
+							System.out.println("It's "+ Encounter.get(i).getEntityName()+"'s turn.");
+
+						}
+						else
+						{
+							
+							i=0;
+							Encounter.get(i).refreshmove();
+ 
+						//	Encounter.get(i).clickPosition = null;
+							System.out.println("It's "+ Encounter.get(i).getEntityName()+"'s turn.");
+
+													
+						}
+						
+					}	
+					
+					
+					
+					break;
 				
-				}
+				
+				}			//Switch entity vége
+				
+				
+				
+				break;		//case 1 vége
+				}    //Switch battleStatus vége
 	
-		}
+		}			//tick() vége
 				
-}
+
 		
 		
 				

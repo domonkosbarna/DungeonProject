@@ -15,10 +15,14 @@ public class Hero extends Entity {
 		this.setAC(14);
 		this.setAttackP(3);
 		this.setDmgP(5);
-		this.currentstat();
-		this.setEntityName("Hercules");
 		this.setActionPoint(1);
-		this.setEntityType("Hero");
+		this.setMovespeed(7);
+		
+		this.setEntityName("Hercules");
+		this.setEntityType("Player");
+		
+		
+		this.currentstat();
 	};
 
 	
