@@ -72,6 +72,8 @@ public class GameWindow extends WindowAdapter {
 		
 		panel = new GamePanel(this);
 		
+		GamePanel actionpanel = new GamePanel(this);
+		frame.getContentPane().add(actionpanel);
 		
 		frame.add(panel);
 		frame.setVisible(true);

@@ -13,14 +13,17 @@ public class Monster extends Entity
 
 	Monster (){
 		this.setHP(20);
-		this.setAC(3);
+		this.setAC(14);
 		this.setAttackP(3);
 		this.setDmgP(5);
-		this.setMovespeed(7);
-		this.currentstat();
-		this.setEntityName("Monster");
 		this.setActionPoint(1);
+		this.setMovespeed(7);
+		
+		
+		this.setEntityName("Monster");
 		this.setEntityType("Enemy");
+		
+		this.currentstat();
 	};
 	
 	

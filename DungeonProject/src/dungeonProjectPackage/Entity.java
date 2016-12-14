@@ -31,6 +31,11 @@ public class Entity implements Comparable<Entity> {
 	private int currentAC;
 	private int currentAttackP;
 	private int currentdmgP;
+	private int currentMovespeed;
+	private int currentActionPoint;
+	
+	
+
 
 	Rectangle bounds;
 
@@ -99,7 +104,11 @@ public class Entity implements Comparable<Entity> {
 
 		}
 	
-	
+	public void refreshmove()
+	{
+		this.setCurrentActionPoint(this.getActionPoint());
+		this.setCurrentMovespeed(this.getMovespeed());
+	}
 	
 	
 	public int getHP() {
@@ -306,6 +315,26 @@ public class Entity implements Comparable<Entity> {
 	public void setBounds(Rectangle b)
 	{
 		bounds = b;
+	}
+	
+
+	public int getCurrentMovespeed() {
+		return currentMovespeed;
+	}
+
+
+	public void setCurrentMovespeed(int currentMovespeed) {
+		this.currentMovespeed = currentMovespeed;
+	}
+
+
+	public int getCurrentActionPoint() {
+		return currentActionPoint;
+	}
+
+
+	public void setCurrentActionPoint(int currentActionPoint) {
+		this.currentActionPoint = currentActionPoint;
 	}
 	
 }
